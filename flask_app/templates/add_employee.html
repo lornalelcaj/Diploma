@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/add_employee.css">
+    <title> HRMS </title>
+    
+
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <!-- Montserrat Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    {% extends "test.html" %}
+    
+        {% block content %}
+    
+    <div class="container">
+
+
+
+        
+    <div class="add_employee-container">
+        
+        <div class="add_employee-form hidden" id="add_employeeForm">
+            <h1>Create a new employee</h1>
+            <form action="/registeremployee" method="POST">
+                <input type="text" placeholder="Name" name="first_name" id="first_name" required>
+                <input type="text" placeholder="Surname" name="last_name" id="last_name" required>
+                <input type="email" placeholder="Email" name="email" id="email" required>
+                <input type="text" id="birthday" name="birthday" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')" pattern="\d{4}-\d{2}-\d{2}" required>
+                <input type="text" id="hire_date" name="hire_date" placeholder="Hire date" onfocus="(this.type='date')" onblur="(this.type='text')" pattern="\d{4}-\d{2}-\d{2}" required>
+                <input type="tel" placeholder="Phone number" name="phone" id="phone" required>
+                <select id="departament" name="departament" required>
+                    <option class="select" value="" disabled selected>Select a departament</option>
+                    {% if dep %}
+                        {% for department in dep %}
+                        <option class="select" value="{{department.id}}">{{ department.name }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option class="select" disabled>No positions available</option>
+                    {% endif %}
+                </select>
+                <select id="position" name="position" required>
+                    <option class="select" value="" disabled selected>Select a position</option>
+                    {% if positions %}
+                        {% for position in positions %}
+                            <option class="select" value="{{ position.id }}">{{ position.name }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option class="select" disabled>No positions available</option>
+                    {% endif %}
+                </select>
+                <input type="number" name="salary" placeholder="Salary" id="salary" required>
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <button>ADD</button>
+
+            </form>
+           
+        </div>
+
+        <div class="add_dep" id="add_dep">
+            <h1>New Department</h1>
+            <form action="/createdepartment" method="POST">
+                <input type="name" placeholder="Add Department if not exists" name="name">
+                <button>ADD</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+    {% endblock %}
+</body>
+
+</html>

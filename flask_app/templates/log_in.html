@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+    
+
+</head>
+<body>
+    <div class="materialContainer">
+
+        <form action="/login" method="post">
+            <div class="box">
+        
+            <div class="title">LOGIN</div>
+            
+            <div class="input">
+                <label for="email">Username</label>
+                <input type="text" name="email" id="email">
+                <span class="spin"></span>
+            </div>
+        
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <span class="spin"></span>
+            </div>
+        
+            <div class="button login">
+                <button><span>GO</span> <i class="fa fa-check"></i></button>
+            </div>
+            <a href="" class="pass-forgot">Forgot your password?</a>
+        
+            </div>
+        </form>
+     
+        <form action="/register" method="post">
+            <div class="overbox">
+            <div class="material-button alt-2"><span class="shape"></span></div>
+        
+            <div class="title">REGISTER</div>
+        
+            <div class="input">
+                <label for="first_name">First name</label>
+                <input type="text" name="first_name" id="first_name">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="last_name">Last name</label>
+                <input type="text" name="last_name" id="last_name">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+                <span class="spin"></span>
+            </div>
+        
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <span class="spin"></span>
+            </div>
+        
+            <div class="input">
+                <label for="confirm_password">Repeat Password</label>
+                <input type="password" name="confirm_password" id="confirm_password">
+                <span class="spin"></span>
+            </div>
+        
+            <div class="button">
+                <button><span>NEXT</span></button>
+            </div>
+        
+        
+            </div>
+        </form>
+     </div>
+</body>
+<script src="../static/js/login.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</html>

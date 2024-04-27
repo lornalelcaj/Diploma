@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <!-- Montserrat Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../static/css/departaments.css">
+
+</head>
+<body>
+    {% extends "test.html" %}
+    
+        {% block content %}
+    <main class="main-container">
+        <div class="main-title">
+            <p class="font-weight-bold">DEPARTAMENTS</p>
+        </div>
+
+        <div class="main-cards">
+            {% for  dep in no_of_emp_per_dep %}
+            <div class="card">
+                <div class="card-inner">
+                    <p class="text-primary">{{dep.department_name }}</p>
+                    <span class="material-icons-outlined text-blue">inventory_2</span>
+                </div>
+                <span class="text-primary font-weight-bold">{{dep.num_employees }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="tables">
+            <h1>Employees by Department</h1>
+            {% for department_name, employees in departments_data.items() %}
+            <h2>{{ department_name }}</h2>
+            {% if employees %}
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birthday</th>
+                        <th>Hire Date</th>
+                        <th>Position</th>
+                        <th>FIRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.first_name }}</td>
+                        <td>{{ employee.last_name }}</td>
+                        <td>{{ employee.birthday }}</td>
+                        <td>{{ employee.hire_date }}</td>
+                        <td>{{ employee.position_name }}</td>
+                        <td><a href="/delete{{employee.id}}">FIRE</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No employees found in this department.</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </main>
+    {% endblock %}
+</body>
+</html>
